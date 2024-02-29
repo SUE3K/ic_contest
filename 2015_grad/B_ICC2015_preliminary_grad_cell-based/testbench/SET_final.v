@@ -36,9 +36,9 @@ parameter Mode1 = 2'b00,
 
 parameter LOAD_DATA = 3'd0,
           InA       = 3'd1,
-		InB       = 3'd2,
-		InC       = 3'd3,
-		COUNTING  = 3'd4,
+	  InB       = 3'd2,
+	  InC       = 3'd3,
+	  COUNTING  = 3'd4,
           DONE      = 3'd5;
 
 
@@ -46,21 +46,21 @@ always@(*) //control state
 begin
 	case(state)
 
-     LOAD_DATA: nextstate = InA; //after set first state, set nextstate
+        LOAD_DATA: nextstate = InA; //after set first state, set nextstate
 
-	InA:	nextstate = InB;
+	InA: nextstate = InB;
 
 	InB: nextstate = InC;
 
 	InC: nextstate = COUNTING;
-
-     COUNTING: nextstate = DONE;
-
-     DONE: nextstate = LOAD_DATA;
-
-     default: nextstate = 'hx;
-
-     endcase
+        
+        COUNTING: nextstate = DONE;
+        
+        DONE: nextstate = LOAD_DATA;
+        
+        default: nextstate = 'hx;
+        
+        endcase
 end
 
 
